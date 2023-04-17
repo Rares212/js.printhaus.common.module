@@ -1,6 +1,6 @@
 {
-  "name": "js.printnuts.module",
-  "version": "1.0.0",
+  "name": "@printnuts/common",
+  "version": "0.1.0",
   "description": "Common TS module for the Printnuts project",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
@@ -41,7 +41,15 @@
   "engines": {
     "node": ">=10"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@types/dinero.js": "^1.9.0",
+    "@types/three": "^0.150.1",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.0",
+    "date-fns": "^2.29.3",
+    "dinero": "^1.0.1",
+    "three": "^0.151.3"
+  },
   "devDependencies": {
     "@ava/typescript": "^1.1.1",
     "@istanbuljs/nyc-config-typescript": "^1.0.1",
