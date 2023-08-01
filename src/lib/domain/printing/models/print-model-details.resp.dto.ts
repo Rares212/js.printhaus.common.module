@@ -1,17 +1,28 @@
-import { Mesh } from 'three';
-import {IsDefined, IsNumber, IsPositive, ValidateNested} from "class-validator";
-import {PriceDto} from "../../shop/models/price.dto";
+import {
+  IsDefined, IsNotEmpty,
+  IsNumber,
+  IsPositive,
+  IsString,
+  ValidateNested
+} from "class-validator";
 import {PrintDimensionsDto} from "./print-dimensions.dto";
+import {DineroObject} from "dinero.js";
 
 export class PrintModelDetailsRespDto {
-  @IsDefined()
-  processedMesh: Mesh;
+
+
+  constructor(cubicCentimeters: number, dimensions: PrintDimensionsDto, grams: number, estimatedPrintTimeHours: number, cost: DineroObject, costCalculationMessage: string) {
+    this.cubicCentimeters = cubicCentimeters;
+    this.dimensions = dimensions;
+    this.grams = grams;
+    this.estimatedPrintTimeHours = estimatedPrintTimeHours;
+    this.cost = cost;
+    this.costCalculationMessage = costCalculationMessage;
+  }
 
   @IsDefined()
-  @IsNumber({
-    allowNaN: false,
-    allowInfinity: false
-  })
+  @IsNumber()
+  @IsPositive()
   cubicCentimeters: number;
 
   @IsDefined()
@@ -26,9 +37,12 @@ export class PrintModelDetailsRespDto {
   @IsDefined()
   @IsNumber()
   @IsPositive()
-  estimatedPrintTimeSeconds: number;
+  estimatedPrintTimeHours: number;
 
   @IsDefined()
-  @ValidateNested()
-  cost: PriceDto;
+  cost: DineroObject;
+
+  @IsNotEmpty()
+  @IsString()
+  costCalculationMessage: string;
 }

@@ -1,44 +1,58 @@
 import {
   IsDefined,
-  IsEnum, IsMongoId,
+  IsEnum, IsHexColor, IsInt, IsISO4217CurrencyCode, IsMongoId,
   IsNotEmpty,
   IsNumber,
   IsOptional,
-  IsPositive, IsRgbColor,
+  IsPositive,
   IsString
 } from "class-validator";
 import {MaterialType} from "../util/material-type.enum";
-import {Dinero} from "dinero.js";
-
+import {AutoMap} from "@automapper/classes";
 
 export class PrintMaterialDto {
+
+  @AutoMap()
   @IsOptional()
   @IsMongoId()
-  id: string;
+  _id: string;
 
+  @AutoMap()
   @IsNotEmpty()
   @IsString()
   name: string;
 
-  @IsNotEmpty()
+  @AutoMap()
+  @IsDefined()
   @IsEnum(MaterialType)
   materialType: MaterialType;
 
+  @AutoMap()
   @IsOptional()
   @IsString()
-  @IsRgbColor()
+  @IsHexColor()
   color: string;
 
+  @AutoMap()
   @IsDefined()
   @IsNumber()
   @IsPositive()
   gramsPerCubicCentimeter: number;
 
+  @AutoMap()
   @IsDefined()
   @IsNumber()
   @IsPositive()
   printSpeedMultiplier: number;
 
+  @AutoMap()
   @IsDefined()
-  costPerGram: Dinero;
+  @IsNumber()
+  @IsInt()
+  costAmount: number;
+
+  @AutoMap()
+  @IsNotEmpty()
+  @IsISO4217CurrencyCode()
+  costCurrency: string;
 }

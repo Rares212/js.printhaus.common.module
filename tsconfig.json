@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "incremental": true,
     "target": "es6",
     "outDir": "build/main",
@@ -42,7 +43,9 @@
     "types": [],
     "typeRoots": ["node_modules/@types", "src/types"]
   },
-  "include": ["src/**/*.ts"],
+  "include": [
+    "src/**/*.ts",
+  ],
   "exclude": ["node_modules/**"],
   "compileOnSave": false
 }
