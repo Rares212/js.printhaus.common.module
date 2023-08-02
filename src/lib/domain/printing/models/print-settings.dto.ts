@@ -10,4 +10,9 @@ export class PrintSettingsDto {
   @IsDefined()
   @IsEnum(PrintStrength)
   strength: PrintStrength;
+
+  constructor(quality: PrintQuality, strength: PrintStrength) {
+    this.quality = quality;
+    this.strength = strength;
+  }
 }
