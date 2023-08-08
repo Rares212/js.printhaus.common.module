@@ -7,3 +7,6 @@ export * from './lib/domain/printing/util/print-quality.enum';
 export * from './lib/domain/printing/util/material-type.enum';
 export * from './lib/domain/printing/util/print-strength.enum';
 export * from './lib/domain/printing/util/supported-file-types.enum';
+export * from './lib/domain/gallery/models/gallery-item.dto';
+export * from './lib/domain/common/models/paginated-request.dto';
+export * from './lib/domain/common/models/filter.dto';
