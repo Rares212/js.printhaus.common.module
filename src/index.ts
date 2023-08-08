@@ -10,3 +10,5 @@ export * from './lib/domain/printing/util/supported-file-types.enum';
 export * from './lib/domain/gallery/models/gallery-item.dto';
 export * from './lib/domain/common/models/paginated-request.dto';
 export * from './lib/domain/common/models/filter.dto';
+export * from './lib/domain/printing/models/print-cost-part.dto';
+

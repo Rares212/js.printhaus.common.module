@@ -4,8 +4,9 @@ import {
     IsDefined,
     IsISO4217CurrencyCode,
     IsMongoId, IsNumber, IsPositive,
-    IsString
+    IsString, ValidateNested
 } from "class-validator";
+import { PrintDimensionsDto } from "../../printing/models/print-dimensions.dto";
 
 export class GalleryItemDto {
     @AutoMap()
@@ -20,6 +21,9 @@ export class GalleryItemDto {
     @IsDefined()
     @IsString()
     description: string;
+
+    @ValidateNested()
+    dimensions: PrintDimensionsDto;
 
     @IsDefined()
     @IsDataURI()
