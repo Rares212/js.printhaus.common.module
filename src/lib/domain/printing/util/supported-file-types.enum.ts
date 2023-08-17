@@ -1,4 +1,4 @@
-export enum SupportedFileTypes {
+export enum SupportedMeshFileTypes {
   STL = 'stl',
   OBJ = 'obj',
 }

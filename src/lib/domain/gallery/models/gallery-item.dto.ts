@@ -1,40 +1,48 @@
 import { AutoMap } from "@automapper/classes";
 import {
     IsDataURI,
-    IsDefined,
     IsISO4217CurrencyCode,
-    IsMongoId, IsNumber, IsPositive,
+    IsMongoId, IsNotEmpty, IsNumber, IsOptional, IsPositive,
     IsString, ValidateNested
 } from "class-validator";
 import { PrintDimensionsDto } from "../../printing/models/print-dimensions.dto";
 
 export class GalleryItemDto {
     @AutoMap()
-    @IsDefined()
     @IsMongoId()
     id: string;
 
-    @IsDefined()
     @IsString()
+    @IsNotEmpty()
     name: string;
 
-    @IsDefined()
+    @IsOptional()
     @IsString()
+    @IsNotEmpty()
     description: string;
 
     @ValidateNested()
     dimensions: PrintDimensionsDto;
 
-    @IsDefined()
     @IsDataURI()
     img: string;
 
-    @IsDefined()
+    @IsString()
+    @IsNotEmpty()
+    materialName: string;
+
+    @IsString()
+    @IsNotEmpty()
+    materialType: string;
+
+    @IsString()
+    @IsNotEmpty()
+    color: string;
+
     @IsNumber()
     @IsPositive()
     costAmount: number;
 
-    @IsDefined()
     @IsISO4217CurrencyCode()
     costCurrency: string;
 }

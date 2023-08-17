@@ -10,6 +10,28 @@ import { DineroObject } from "dinero.js";
 
 export class PrintModelDetailsRespDto {
 
+    @IsNumber()
+    @IsPositive()
+    cubicCentimeters: number;
+
+    @ValidateNested()
+    dimensions: PrintDimensionsDto;
+
+    @IsNumber()
+    @IsPositive()
+    grams: number;
+
+    @IsNumber()
+    @IsPositive()
+    estimatedPrintTimeHours: number;
+
+    @IsDefined()
+    cost: DineroObject;
+
+    @IsDefined()
+    @ValidateNested()
+    printCostParts: PrintCostPartDto[];
+
     constructor(
         cubicCentimeters: number,
         dimensions: PrintDimensionsDto,
@@ -25,30 +47,4 @@ export class PrintModelDetailsRespDto {
         this.cost = cost;
         this.printCostParts = printCostParts;
     }
-
-    @IsDefined()
-    @IsNumber()
-    @IsPositive()
-    cubicCentimeters: number;
-
-    @IsDefined()
-    @ValidateNested()
-    dimensions: PrintDimensionsDto;
-
-    @IsDefined()
-    @IsNumber()
-    @IsPositive()
-    grams: number;
-
-    @IsDefined()
-    @IsNumber()
-    @IsPositive()
-    estimatedPrintTimeHours: number;
-
-    @IsDefined()
-    cost: DineroObject;
-
-    @IsDefined()
-    @ValidateNested()
-    printCostParts: PrintCostPartDto[];
 }

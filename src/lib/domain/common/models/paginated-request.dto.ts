@@ -1,5 +1,4 @@
 import {
-    IsDefined,
     IsInt,
     IsOptional,
     Min, ValidateNested
@@ -8,12 +7,10 @@ import { FilterDTO } from "./filter.dto";
 
 export class PaginatedRequestDto {
 
-    @IsDefined()
     @IsInt()
     @Min(0)
     page: number;
 
-    @IsDefined()
     @IsInt()
     @Min(0)
     pageSize: number;

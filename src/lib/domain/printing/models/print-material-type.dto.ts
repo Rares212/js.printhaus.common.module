@@ -1,7 +1,6 @@
 import {
     ArrayMinSize,
     IsArray,
-    IsDefined,
     IsMongoId, IsNotEmpty, IsOptional,
     IsString
 } from "class-validator";
@@ -9,29 +8,24 @@ import { AutoMap } from "@automapper/classes";
 
 export class PrintMaterialTypeDto {
     @AutoMap()
-    @IsDefined()
     @IsMongoId()
     id: string;
 
-    @IsDefined()
     @IsArray()
     @ArrayMinSize(1)
     photoIdList: string[];
 
     @AutoMap()
-    @IsDefined()
     @IsString()
     @IsNotEmpty()
     shortName: string;
 
     @AutoMap()
-    @IsDefined()
     @IsString()
     @IsNotEmpty()
     fullName: string;
 
     @AutoMap()
-    @IsDefined()
     @IsString()
     @IsNotEmpty()
     description: string;

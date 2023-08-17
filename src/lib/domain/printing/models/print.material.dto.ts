@@ -1,5 +1,4 @@
 import {
-    IsDefined,
     IsHexColor,
     IsInt,
     IsISO4217CurrencyCode,
@@ -18,42 +17,40 @@ export class PrintMaterialDto {
     @IsMongoId()
     id: string;
 
-    @AutoMap()
-    @IsDefined()
     @IsMongoId()
     materialTypeId: string;
 
     @AutoMap()
-    @IsNotEmpty()
     @IsString()
+    @IsNotEmpty()
+    materialTypeShortName: string;
+
+    @AutoMap()
+    @IsString()
+    @IsNotEmpty()
     name: string;
 
     @AutoMap()
     @IsOptional()
-    @IsString()
     @IsHexColor()
     color: string;
 
     @AutoMap()
-    @IsDefined()
     @IsNumber()
     @IsPositive()
     gramsPerCubicCentimeter: number;
 
     @AutoMap()
-    @IsDefined()
     @IsNumber()
     @IsPositive()
     printSpeedMultiplier: number;
 
     @AutoMap()
-    @IsDefined()
     @IsNumber()
     @IsInt()
     costAmount: number;
 
     @AutoMap()
-    @IsNotEmpty()
     @IsISO4217CurrencyCode()
     costCurrency: string;
 

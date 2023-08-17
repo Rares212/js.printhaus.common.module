@@ -1,40 +1,41 @@
 import {
-    IsDefined,
     IsMongoId,
     IsNotEmpty, IsOptional,
     IsString
 } from "class-validator";
+import { AutoMap } from "@automapper/classes";
 
 export class FileInfoDto {
-    @IsDefined()
+
+    @AutoMap()
     @IsMongoId()
     id: string;
 
-    @IsDefined()
-    @IsString()
-    @IsNotEmpty()
-    fileName: string;
-
-    @IsDefined()
     @IsString()
     @IsNotEmpty()
     file: string;
 
-    @IsDefined()
+    @AutoMap()
     @IsString()
     @IsNotEmpty()
     mime: string;
 
     @IsOptional()
     @IsString()
+    @IsNotEmpty()
+    fileName: string | null
+
+    @AutoMap()
+    @IsOptional()
+    @IsString()
     comment: string | null;
 
 
-    constructor(id: string, fileName: string, file: string, mime: string, comment?: string | null) {
+    constructor(id: string, file: string, mime: string, fileName?: string | null, comment?: string | null) {
         this.id = id;
-        this.fileName = fileName;
         this.file = file;
         this.mime = mime;
+        this.fileName = fileName ? fileName : null;
         this.comment = comment ? comment : null;
     }
 }
