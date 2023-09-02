@@ -1,5 +1,6 @@
 import { AutoMap } from "@automapper/classes";
 import {
+    IsBoolean,
     IsDataURI,
     IsISO4217CurrencyCode,
     IsMongoId, IsNotEmpty, IsNumber, IsOptional, IsPositive,
@@ -7,7 +8,7 @@ import {
 } from "class-validator";
 import { PrintDimensionsDto } from "../../printing/models/print-dimensions.dto";
 
-export class GalleryItemDto {
+export class ShopItemDto {
     @AutoMap()
     @IsMongoId()
     id: string;
@@ -20,6 +21,10 @@ export class GalleryItemDto {
     @IsString()
     @IsNotEmpty()
     description: string;
+
+    @IsString()
+    @IsNotEmpty()
+    creator: string;
 
     @ValidateNested()
     dimensions: PrintDimensionsDto;
@@ -39,9 +44,32 @@ export class GalleryItemDto {
     @IsNotEmpty()
     color: string;
 
+    @IsBoolean()
+    assemblyRequired: boolean;
+
+    @IsNumber()
+    @IsPositive()
+    reviewCount: number;
+
+    @IsNumber()
+    @IsPositive()
+    reviewValue: number;
+
+    @IsNumber()
+    @IsPositive()
+    version: number;
+
+    @IsString({ each: true })
+    tags: string[];
+
     @IsNumber()
     @IsPositive()
     costAmount: number;
+
+    @IsOptional()
+    @IsNumber()
+    @IsPositive()
+    reducedCostAmount: number;
 
     @IsISO4217CurrencyCode()
     costCurrency: string;
