@@ -30,7 +30,10 @@ export class ShopItemDto {
     dimensions: PrintDimensionsDto;
 
     @IsDataURI()
-    img: string;
+    thumbnail: string;
+
+    @IsMongoId({ each: true })
+    photoIds: string[];
 
     @IsString()
     @IsNotEmpty()
@@ -54,10 +57,6 @@ export class ShopItemDto {
     @IsNumber()
     @IsPositive()
     reviewValue: number;
-
-    @IsNumber()
-    @IsPositive()
-    version: number;
 
     @IsString({ each: true })
     tags: string[];
