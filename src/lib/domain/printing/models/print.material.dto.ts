@@ -54,7 +54,6 @@ export class PrintMaterialDto {
     @IsISO4217CurrencyCode()
     costCurrency: string;
 
-
     constructor(id: string, materialTypeId: string, name: string, color: string, gramsPerCubicCentimeter: number, printSpeedMultiplier: number, costAmount: number, costCurrency: string) {
         this.id = id;
         this.materialTypeId = materialTypeId;

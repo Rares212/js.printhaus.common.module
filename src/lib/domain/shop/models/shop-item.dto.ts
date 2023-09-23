@@ -1,12 +1,12 @@
 import { AutoMap } from "@automapper/classes";
 import {
     IsBoolean,
-    IsDataURI,
     IsISO4217CurrencyCode,
     IsMongoId, IsNotEmpty, IsNumber, IsOptional, IsPositive,
     IsString, ValidateNested
 } from "class-validator";
 import { PrintDimensionsDto } from "../../printing/models/print-dimensions.dto";
+import { PrintMaterialDto } from "../../printing/models/print.material.dto";
 
 export class ShopItemDto {
     @AutoMap()
@@ -27,39 +27,23 @@ export class ShopItemDto {
     creator: string;
 
     @ValidateNested()
+    material: PrintMaterialDto;
+
+    @IsNumber()
+    @IsPositive()
+    grams: number;
+
+    @ValidateNested()
     dimensions: PrintDimensionsDto;
 
-    @IsDataURI()
-    thumbnail: string;
+    @IsMongoId()
+    thumbnailId: string;
 
     @IsMongoId({ each: true })
     photoIds: string[];
 
-    @IsString()
-    @IsNotEmpty()
-    materialName: string;
-
-    @IsString()
-    @IsNotEmpty()
-    materialType: string;
-
-    @IsString()
-    @IsNotEmpty()
-    color: string;
-
     @IsBoolean()
     assemblyRequired: boolean;
-
-    @IsNumber()
-    @IsPositive()
-    reviewCount: number;
-
-    @IsNumber()
-    @IsPositive()
-    reviewValue: number;
-
-    @IsString({ each: true })
-    tags: string[];
 
     @IsNumber()
     @IsPositive()
@@ -72,4 +56,16 @@ export class ShopItemDto {
 
     @IsISO4217CurrencyCode()
     costCurrency: string;
+
+    @IsNumber()
+    @IsPositive()
+    reviewCount: number;
+
+    @IsNumber()
+    @IsPositive()
+    reviewValue: number;
+
+    @IsString({ each: true })
+    tags: string[];
+
 }
