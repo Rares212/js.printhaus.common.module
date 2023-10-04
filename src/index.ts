@@ -16,7 +16,9 @@ export * from './lib/domain/common/models/paginated-request.dto';
 export * from './lib/domain/common/models/filter.dto';
 export * from './lib/domain/common/models/file-info.dto';
 export * from './lib/domain/common/models/dictionary-value.dto';
-export * from './lib/domain/common/models/haus-image.dto';
+export * from './lib/domain/common/models/image-info.dto';
 export * from './lib/domain/common/const/dictionary-keys.enum';
 
-export * from './lib/domain/auth/models/haus-user.dto';
+export * from './lib/domain/auth/models/auth-user.dto';
+
+export * from './lib/domain/image/models/image.request.dto';

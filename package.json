@@ -1,5 +1,5 @@
 {
-  "name": "@printnuts/common",
+  "name": "@printhaus/common",
   "version": "0.1.0",
   "description": "Common TS module for the Printnuts project",
   "main": "build/main/index.js",
