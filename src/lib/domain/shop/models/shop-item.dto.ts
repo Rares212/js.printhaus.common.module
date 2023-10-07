@@ -3,25 +3,29 @@ import {
     IsBoolean,
     IsISO4217CurrencyCode,
     IsMongoId, IsNotEmpty, IsNumber, IsOptional, IsPositive,
-    IsString, ValidateNested
+    IsString, IsUrl, ValidateNested
 } from "class-validator";
 import { PrintDimensionsDto } from "../../printing/models/print-dimensions.dto";
 import { PrintMaterialDto } from "../../printing/models/print.material.dto";
+import { ImageInfoRespDto } from "../../image/models/image-info.resp.dto";
 
 export class ShopItemDto {
     @AutoMap()
     @IsMongoId()
     id: string;
 
+    @AutoMap()
     @IsString()
     @IsNotEmpty()
     name: string;
 
+    @AutoMap()
     @IsOptional()
     @IsString()
     @IsNotEmpty()
     description: string;
 
+    @AutoMap()
     @IsString()
     @IsNotEmpty()
     creator: string;
@@ -29,6 +33,7 @@ export class ShopItemDto {
     @ValidateNested()
     material: PrintMaterialDto;
 
+    @AutoMap()
     @IsNumber()
     @IsPositive()
     grams: number;
@@ -36,24 +41,31 @@ export class ShopItemDto {
     @ValidateNested()
     dimensions: PrintDimensionsDto;
 
-    @IsMongoId()
-    thumbnailId: string;
+    @ValidateNested()
+    mainPhoto: ImageInfoRespDto;
 
-    @IsMongoId({ each: true })
-    photoIds: string[];
+    @ValidateNested()
+    galleryPhotos: ImageInfoRespDto[];
 
+    @IsUrl()
+    modelFileUrl: string;
+
+    @AutoMap()
     @IsBoolean()
     assemblyRequired: boolean;
 
+    @AutoMap()
     @IsNumber()
     @IsPositive()
     costAmount: number;
 
+    @AutoMap()
     @IsOptional()
     @IsNumber()
     @IsPositive()
     reducedCostAmount: number;
 
+    @AutoMap()
     @IsISO4217CurrencyCode()
     costCurrency: string;
 
@@ -65,7 +77,7 @@ export class ShopItemDto {
     @IsPositive()
     reviewValue: number;
 
+    @AutoMap({depth: 1})
     @IsString({ each: true })
     tags: string[];
-
 }

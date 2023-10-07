@@ -21,4 +21,4 @@ export * from './lib/domain/common/const/dictionary-keys.enum';
 
 export * from './lib/domain/auth/models/auth-user.dto';
 
-export * from './lib/domain/image/models/image.request.dto';
+export * from './lib/domain/image/models/image-info.resp.dto';
