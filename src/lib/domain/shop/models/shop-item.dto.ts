@@ -3,7 +3,7 @@ import {
     IsBoolean,
     IsISO4217CurrencyCode,
     IsMongoId, IsNotEmpty, IsNumber, IsOptional, IsPositive,
-    IsString, IsUrl, ValidateNested
+    IsString, ValidateNested
 } from "class-validator";
 import { PrintDimensionsDto } from "../../printing/models/print-dimensions.dto";
 import { PrintMaterialDto } from "../../printing/models/print.material.dto";
@@ -47,9 +47,6 @@ export class ShopItemDto {
     @ValidateNested()
     galleryPhotos: ImageInfoRespDto[];
 
-    @IsUrl()
-    modelFileUrl: string;
-
     @AutoMap()
     @IsBoolean()
     assemblyRequired: boolean;
@@ -77,7 +74,7 @@ export class ShopItemDto {
     @IsPositive()
     reviewValue: number;
 
-    @AutoMap({depth: 1})
+    @AutoMap({depth: 2})
     @IsString({ each: true })
     tags: string[];
 }

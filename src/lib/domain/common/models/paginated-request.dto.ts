@@ -4,13 +4,16 @@ import {
     Min, ValidateNested
 } from "class-validator";
 import { FilterDTO } from "./filter.dto";
+import { Type } from "class-transformer";
 
 export class PaginatedRequestDto {
 
+    @Type(() => Number)
     @IsInt()
     @Min(0)
     page: number;
 
+    @Type(() => Number)
     @IsInt()
     @Min(0)
     pageSize: number;
