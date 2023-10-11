@@ -49,12 +49,14 @@
     "class-validator": "^0.14.0",
     "date-fns": "^2.29.3",
     "dinero": "^1.0.1",
-    "fflate": "^0.7.4",
-    "reflect-metadata": "^0.1.13"
+    "fflate": "^0.8.1",
+    "reflect-metadata": "^0.1.13",
+    "three": "^0.157.0"
   },
   "devDependencies": {
     "@ava/typescript": "^1.1.1",
     "@istanbuljs/nyc-config-typescript": "^1.0.1",
+    "@types/three": "^0.157.0",
     "@typescript-eslint/eslint-plugin": "^4.0.1",
     "@typescript-eslint/parser": "^4.0.1",
     "ava": "^3.12.1",
