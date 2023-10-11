@@ -5,6 +5,7 @@ export * from './lib/domain/printing/models/print-settings.dto';
 export * from './lib/domain/printing/models/print-dimensions.dto';
 export * from './lib/domain/printing/models/print-material-type.dto';
 export * from './lib/domain/printing/models/print-cost-part.dto';
+export * from './lib/domain/printing/models/model-info.resp.dto';
 export * from './lib/domain/printing/util/print-quality.enum';
 export * from './lib/domain/printing/util/print-strength.enum';
 export * from './lib/domain/printing/util/supported-file-types.enum';
